@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 4f, curSpeed;
-    private Vector3 deplacement = Vector3.zero;
+    private float speed = 4f, rot = 80f, curSpeed;
+  //  private Vector3 deplacement = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
         if (Input.GetKey(KeyCode.UpArrow))
         {
             deplacement = Vector3.forward;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
             deplacement = Vector3.zero;
             transform.Rotate(Vector3.up * 30 * Time.fixedDeltaTime);
         }
-
+        */
 
         //vitesse
         if (Input.GetKey(KeyCode.LeftControl)){
@@ -47,8 +48,13 @@ public class PlayerController : MonoBehaviour
             curSpeed = speed;
         }
 
-
+        /*
         transform.Translate(deplacement * curSpeed * Time.fixedDeltaTime);
-        deplacement = Vector3.zero;
+        deplacement = Vector3.zero;*/
+
+        transform.Rotate(Vector3.up * rot * Time.fixedDeltaTime * Input.GetAxis("Horizontal"));
+
+        transform.Translate(Vector3.forward * curSpeed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
+
     }
 }
