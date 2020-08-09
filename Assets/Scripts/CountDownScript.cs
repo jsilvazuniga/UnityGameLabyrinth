@@ -28,7 +28,9 @@ public class CountDownScript : MonoBehaviour
             TxtTimeLeft.text = "TimeLeft: " + startCountDown;
         }
 
-        Debug.Log("You ar died!!!");
+        Debug.Log("You are died!!!");
+
+        GameObject.Find("Menu").GetComponent<PlayerController>().GameOver();
     }
 
 }

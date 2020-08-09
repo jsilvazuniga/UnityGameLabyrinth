@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 4f, rot = 80f, curSpeed;
-  //  private Vector3 deplacement = Vector3.zero;
+
+    [SerializeField]
+    GameObject ImageGameOver;
+    //  private Vector3 deplacement = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -56,5 +60,17 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(Vector3.forward * curSpeed * Time.fixedDeltaTime * Input.GetAxis("Vertical"));
 
+    }
+
+    public void GameOver()
+    {
+        ImageGameOver.SetActive(true);
+        StartCoroutine(LoadMenu());
+    }
+
+    IEnumerator LoadMenu()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Menu");
     }
 }
