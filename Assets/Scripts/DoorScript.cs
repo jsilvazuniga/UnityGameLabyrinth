@@ -9,6 +9,12 @@ public class DoorScript : MonoBehaviour
     [SerializeField]
     AudioClip soundOpen, soundDenied;
 
+    [SerializeField]
+    Animator myAnimator;
+
+    [SerializeField]
+    GameObject endPointParticule;
+
     private AudioSource myAudioSource;
 
     private void Awake()
@@ -21,8 +27,10 @@ public class DoorScript : MonoBehaviour
         if (other.CompareTag("Player") && CanOpen)
         {
             //   Debug.Log(other.name + " est à l'interieur du trigger");
-            GetComponent<Animator>().enabled = true;
+            //  GetComponent<Animator>().enabled = true;
+            myAnimator.enabled = true;
             myAudioSource.PlayOneShot(soundOpen);
+            endPointParticule.SetActive(true);
         }
         else
         {
