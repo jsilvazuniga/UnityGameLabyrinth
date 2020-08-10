@@ -24,9 +24,14 @@ public class AfterBurnerScript : MonoBehaviour
     {
         if(collision.collider.tag == "Player")
         {
-           // Debug.Log("win");
+            // Debug.Log("win");
+            //grabando information
+            PlayerPrefs.SetInt("DenierNiveau", LevelToLoad);
+
             //recupera el indice de la scena y va a la siguiente
             SceneManager.LoadScene(LevelToLoad);
+
+
         }
     }
 

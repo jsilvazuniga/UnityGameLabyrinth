@@ -12,10 +12,19 @@ public class CountDownScript : MonoBehaviour
     [SerializeField]
     Text TxtTimeLeft;
 
+    [SerializeField]
+    Text TxtLevel;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        int levelToLoad = PlayerPrefs.GetInt("DenierNiveau");
+        if (levelToLoad < 1) { levelToLoad = 1; }
+        TxtLevel.text = "Level: " + levelToLoad;
+
         TxtTimeLeft.text = "TimeLeft: " + startCountDown;
+        
         StartCoroutine(Pause());
     }
 
